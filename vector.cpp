@@ -1,18 +1,13 @@
 #include <iostream>
-
 #include<vector>
 #include<algorithm>
 #include<numeric>
 using namespace std;
 
-int X;
-bool kratn(int x) {
-    return x % X == 0;
-}
-
 int main() {
-    int n;
+    int n, X, Y;
     cout << "X="; cin >> X;
+    cout << "Y="; cin >> Y;
     cout << "n = "; cin >> n;
     vector<int>vec;
     int x;
@@ -24,13 +19,10 @@ int main() {
 
     for (vector<int>::iterator iter = vec.begin(); iter != vec.end(); iter++)
         cout << *iter << " ";
-    cout << endl;
+        cout << endl;
 
-
-    vector<int> temp(vec);
-    int MAX = *max_element(vec.begin(), vec.end());
-    replace_if(vec.begin(), vec.end(), kratn, MAX);
-
+    replace(vec.begin(), vec.end(), X, Y);
+    
     for (vector<int>::iterator iter = vec.begin(); iter != vec.end(); iter++)
         cout << *iter << " ";
     cout << endl;

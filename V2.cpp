@@ -32,8 +32,18 @@ int main() {
     int MIN = *min_element(vec.begin(), vec.end());
     replace_if(vec.begin(),vec.end(),kratn,MIN);
 
+    cout << "Новый вектор: ";
+
     for (vector<int>::iterator iter = vec.begin(); iter != vec.end(); iter++)
     cout << *iter << " ";
+    cout << endl;
+
+    // Сортировка
+    sort(vec.begin(), vec.end());
+    cout << "Отсортированный вектор: ";
+
+    for (vector<int>::iterator iter = vec.begin(); iter != vec.end(); iter++)
+        cout << *iter << " ";
     cout << endl;
 
     system("pause");

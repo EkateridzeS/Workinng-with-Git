@@ -46,24 +46,30 @@ void print(list*& h, list*& t) {
 		p = p->next;//переход к следующему
 	}
 }
-//функция для изменения списка в соответствии с заданием
-void result(list*& h, list*& t) {
-	list* k = NULL;
-	list* q = NULL;
-	list* p = h;//указатель на голову
-	while (p) {//пока не дошли до конца списка
-		//		list* k = p->next; //сохраняем указатель на следующий элемент
-		if (p->inf % 2 != 0) {
-			if (!k) {
-				k = p;
-			}
-			q = p;
+
+list* minz(list*& h) {
+	list* min = h;
+	list* p = h->next;
+	while (p) {
+		if (p->inf < min->inf) {
+			min = p;
 		}
 		p = p->next;
 	}
-			del_node(h, t, k); 
-			del_node(h, t, q);
+	return min;
+}
+
+
+//функция для изменения списка в соответствии с заданием
+void result(list*& h, list*& t) {
+	list* min = minz(h);
+	list* p = h;//указатель на голову
+	while (p != min) {//пока не дошли до конца списка
+		push(h, t, p->inf);
+		del_node(h, t, p); //удаляем его
+		p = h;//присваиваем p следующий элемент
 	}
+}
 
 int main() {
 	int n, y;
